@@ -1,0 +1,24 @@
+@import 'src/index.scss';
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:  rgba(255, 255, 255, 0.8);;
+  margin-bottom: 36px;
+  position: relative;
+
+  &__menu {
+    position: absolute;
+    left: 12px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 24px;
+  }
+
+  .notification-banner {
+    position: absolute;
+  }
+}

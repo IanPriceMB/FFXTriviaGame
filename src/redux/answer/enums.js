@@ -1,0 +1,3 @@
+export const SET_ANSWER = 'SET_ANSWER';
+export const SET_ANSWER_LOADING = 'SET_ANSWER_LOADING';
+export const CLEAR_ANSWER = 'CLEAR_ANSWER';
