@@ -1,13 +1,7 @@
 import actionFactory from './actionFactory';
-import fetchActionFactory from './fetchActionFactory';
-import basicFetch from './basicFetch';
-import getData from './getData';
-import postData from './postData';
+import storeFactory from './storeFactory';
 
 export {
   actionFactory,
-  fetchActionFactory,
-  basicFetch,
-  getData,
-  postData,
+  storeFactory,
 };

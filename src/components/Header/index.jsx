@@ -2,27 +2,13 @@ import React from 'react';
 import { Menu, NotificationBanner } from '../../containers';
 import './styles.scss';
 
-/**
- * Main app header
- * @param {string} title - app title
- */
-export default ({ title }) => (
-  <header
-    className="header"
-    id="Header"
-    role="banner"
-  >
-    <div 
-      className="header__menu"
-      id="HeaderMenu"
-    >
+export default () => (
+  <header className="header" role="banner">
+    <div className="header__menu">
       <Menu />
     </div>
-    <h1
-      className="header__title"
-      id="HeaderTitle"
-    >
-      {title}  
+    <h1 className="header__title">
+      Final Fantasy X Trivia!
     </h1>
     <NotificationBanner />
   </header>

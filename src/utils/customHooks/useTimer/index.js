@@ -1,30 +1,31 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateTimer, stopTimer } from '../../../redux/timer/actions';
 
-export default (startingTime) => {
-  const dispatch = useDispatch();
+export default (startingTime = 20) => {
   const [seconds, setSeconds] = useState(startingTime);
-  const { isActive } = useSelector(({ timer }) => timer);
+  const [isActive, setIsActive] = useState(true);
+
+  function toggle() {
+    setIsActive(!isActive);
+  }
+
+  function reset() {
+    setSeconds(startingTime);
+    setIsActive(false);
+  }
 
   useEffect(() => {
     let interval = null;
-
     if (isActive && seconds <= 0) {
       clearInterval(interval);
-      dispatch(stopTimer());
+      setIsActive(false);
     } else if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds - 1);
       }, 1000);
-      dispatch(updateTimer({ seconds }))
     } 
+    
+    return () => clearInterval(interval);
+  }, [isActive, seconds]);
 
-    return () => {
-      clearInterval(interval);
-      if (seconds <= 0) dispatch(stopTimer());
-    };
-  }, [isActive, seconds, dispatch]);
-
-  return seconds;
+  return [seconds, reset, toggle]
 }
