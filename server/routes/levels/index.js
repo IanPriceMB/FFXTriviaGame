@@ -16,22 +16,26 @@ const levelMap = {
   sin,
 };
 
-router.get('/:level/:round', (req, res, next) => {
-  const { level, round } = req.params;
+const nextLevelMap = {
+  besaid: 'luca',
+  luca: 'djose',
+  djose: 'thunderPlains',
+  thunderPlains: 'gagazet',
+  gagazet: 'sin',
+  sin: null,
+}
+
+router.get('/:level', (req, res, next) => {
+  const { level } = req.params;
   if (!level) {
     res.send({error: 'No level sent in query params.'});
     throw new Error('No level available in request params');
   };
 
-  if (!round) {
-    res.send({ error: 'No round number sent in query params.'});
-    throw new Error('No round available in request params');
-  };
-
   res.send({ 
-    question: levelMap[level][round].question,
-    answers: levelMap[level][round].answers,
-    questionTime: 30,
+    level,
+    numQuestions: levelMap[level].length,
+    nextLevel: nextLevelMap[level]
   });
 });
 

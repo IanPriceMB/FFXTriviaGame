@@ -12,8 +12,8 @@ export default (useGameStateDispatch) => () => {
 
   const setLevel = (payload) => dispatch(actionFactory(SET_LEVEL)(payload));
 
-  const setRound = (payload) => dispatch(actionFactory(SET_ROUND)(payload));
+  const nextRound = (payload) => dispatch(actionFactory(SET_ROUND)(payload));
 
-  return { updateScore, setLevel, setRound };
+  return { updateScore, setLevel, nextRound };
 };
 

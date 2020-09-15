@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 
-export default (startingTime = 20) => {
+export default (startingTime) => {
   const [seconds, setSeconds] = useState(startingTime);
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
-  function toggle() {
-    setIsActive(!isActive);
+  function start() {
+    setIsActive(true);
+  }
+
+  function stop() {
+    setIsActive(false);
   }
 
   function reset() {
@@ -25,7 +29,7 @@ export default (startingTime = 20) => {
     } 
     
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
+  }, [isActive, seconds,setSeconds]);
 
-  return [seconds, reset, toggle]
+  return [seconds, start, stop, reset]
 }

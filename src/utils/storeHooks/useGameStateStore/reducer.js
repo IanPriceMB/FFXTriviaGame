@@ -8,6 +8,8 @@ export const initialState = {
   besaid: [],
   level: 'besaid',
   round: 0,
+  numQuestions: null,
+  nextLevel: null,
 };
 
 export default function(state = initialState, { type, payload }) {
@@ -16,7 +18,7 @@ export default function(state = initialState, { type, payload }) {
       const { level, answer } = payload;
       return {
         ...state,
-        [level]: state[level].push(answer)
+        [level]: [...state[level], answer]
       };
     case SET_LEVEL:
       return {
@@ -26,7 +28,7 @@ export default function(state = initialState, { type, payload }) {
     case SET_ROUND:
       return {
         ...state, 
-        round: payload
+        round: state.round + 1
       }
     default:
       return state;
